@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="./js/script.js" ></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+  
+   
     <script>
         tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#040C1E',
-                    }
-                }
-            }
-        }
+              
+            content: [
+        "./*.{html,js}",
+        "./js/*.js"
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+}
+        
     </script>
     <title>DOCTOR NOTE</title>
 </head>
@@ -58,17 +63,42 @@
     </nav>
 </header>
 <main>
-    <div class="container mx-auto text-center p-20">
-        <h1 class="text-5xl  ">Harry up SingUp a free account 😇</h1>
-            <form id="contact-form" class="flex"></form>
-
-    </div>
+    <section>
+        <div class="container mx-auto pt-20 ">
+            <h1 class="text-3xl mb-6 text-center">SingUp account 😇</h1>
+            <form id="contact-form" class="flex flex-col mx-auto gap-2.5 p-7 m-7 w-80 bg-blue-200 rounded text-left">
+        <div class="flex flex-col gap-1">
+            <label for="firstName">
+                First Name (Required)
+            </label>
+            <input id="firstName" class="p-2 rounded" name="firstName" type="text" placeholder="Enter First Name">
+            <span id="firstNameError" class="hidden text-base text-black"> Enter your first name </span>
+        </div>
+        <div class="flex flex-col gap-1 ">
+            <label for="email" class="text-gray-500">Email (Required) </label>
+            <input id="email" class="p-2 rounded" name="email" type="text" placeholder="Enter email">
+            <span id="emailErrorNotValid" class="hidden text-base text-black">Email must be a valid email from @ stud.noroff.no or noroff.no</span>
+            <span id="emailError" class="hidden text-base text-black">Email is required!</span>
+        </div>
+        <div class="flex flex-col gap-1">
+            <label for="password">Password (Required) </label>
+            <input id="password" class="p-2 rounded-" name="password" type="password" placeholder="Enter password">
+            <span id="passwordError" class="hidden text-base text-black-"> Password must be over 8 chars!</span>
+            <span id="passwordErrorNotValid" class="hidden text-base text-black">Password is not valid</span>
+        </div>
+        <div class="flex flex-col gap-1">
+            <label for="confirm_password">Confirm Password again: </label>
+            <input id="confirm_password" class="p-2 rounded" name="password" type="password" placeholder="Confirm Password">
+            <span id="confirmPasswordErrorNotMatching" class="hidden text-base text-black">Passwords doesn't match!</span>
+            <span id="confirmPasswordError" class="hidden text-base text-black"> Confirm Password is required and must be over 8 chars!</span>
+        </div>
+        <button class="p-2 mt-3 text-white bg-black rounded text-2xl" type="submit">Create 😃 </button>
+    </form>
+     <p id="general-error-message"  class=" text-center text-3xl text-red-500 "></p>
+        </div>
+    </section>
 </main>
-
-
-
-
-
+<script type="module" src="./js/script.js" defer></script>
     <script>// Hamburger Menu
            function Menu(e){
             let list = document.querySelector('ul');
@@ -76,5 +106,4 @@
             }
     </script>
 </body>
-
 </html>

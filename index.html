@@ -50,36 +50,34 @@
 <main>
     <section>
         <div class="container mx-auto pt-20 ">
-            <h1 class="text-3xl mb-6 text-center">SingUp account 😇</h1>
+            <h1 class="text-3xl mb-6 text-center">SingUp free account</h1>
             <form id="contact-form" class="flex flex-col mx-auto gap-2.5 p-7 m-7 w-80 bg-blue-200 rounded text-left">
         <div class="flex flex-col gap-1">
-            <label for="firstName">
-                First Name (Required)
-            </label>
+            <label  for="firstName"> First Name (Required)</label>
             <input id="firstName" class="p-2 rounded" name="firstName" type="text" placeholder="Enter First Name">
-            <span id="firstNameError" class="hidden text-base text-black"> Enter your first name </span>
+            <span id="firstNameError" class="hidden text-xl text-yellow-900"> Enter your first name </span>
         </div>
         <div class="flex flex-col gap-1 ">
-            <label for="email" class="text-gray-500">Email (Required) </label>
+            <label for="email">Email (Required) </label>
             <input id="email" class="p-2 rounded" name="email" type="text" placeholder="Enter email">
-            <span id="emailErrorNotValid" class="hidden text-base text-black">Email must be a valid email from @ stud.noroff.no or noroff.no</span>
-            <span id="emailError" class="hidden text-base text-black">Email is required!</span>
+            <span id="emailErrorNotValid" class="hidden text-xl text-yellow-900">Email must be a valid email from @ stud.noroff.no or noroff.no</span>
+            <span id="emailError" class="hidden text-xl text-yellow-900">Email is required!</span>
         </div>
         <div class="flex flex-col gap-1">
             <label for="password">Password (Required) </label>
             <input id="password" class="p-2 rounded-" name="password" type="password" placeholder="Enter password">
-            <span id="passwordError" class="hidden text-base text-black-"> Password must be over 8 chars!</span>
-            <span id="passwordErrorNotValid" class="hidden text-base text-black">Password is not valid</span>
+            <span id="passwordError" class="hidden text-xl text-yellow-900"> Password must be over 8 chars!</span>
+            <span id="passwordErrorNotValid" class="hidden text-xl text-yellow-900">Password is not valid</span>
         </div>
         <div class="flex flex-col gap-1">
-            <label for="confirm_password">Confirm Password again: </label>
-            <input id="confirm_password" class="p-2 rounded" name="password" type="password" placeholder="Confirm Password">
-            <span id="confirmPasswordErrorNotMatching" class="hidden text-base text-black">Passwords doesn't match!</span>
-            <span id="confirmPasswordError" class="hidden text-base text-black"> Confirm Password is required and must be over 8 chars!</span>
+            <label for="confirm_password">Confirm Password again </label>
+            <input id="confirm-password" class="p-2 rounded" name="password" type="password" placeholder="Confirm Password">
+            <span id="confirmPasswordErrorNotMatching" class="hidden text-xl text-yellow-900">Passwords doesn't match!</span>
+            <span id="confirmPasswordError" class="hidden text-xl text-yellow-900"> Confirm Password is required and must be over 8 chars!</span>
         </div>
         <button class="p-2 mt-3 text-white bg-black rounded text-2xl" type="submit">Create 😃 </button>
     </form>
-     <p id="general-error-message"  class=" text-center text-3xl text-red-500 "></p>
+     <p id="error-message"  class=" text-center  text-xl text-yellow-900  "></p>
         </div>
     </section>
 </main>

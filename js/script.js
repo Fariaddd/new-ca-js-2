@@ -1,5 +1,15 @@
 import '../style/style.css'
 
-
 const contacForm = document.querySelector("#contact-form");
-console.log(contacForm);
+const firstName = document.querySelector("#firstName");
+const firstNameError = document.querySelector("#firstNameError");
+
+
+contacForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    
+
+
+})
+

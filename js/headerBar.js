@@ -1,30 +1,30 @@
 import {getUserName} from "./Storage/Storage.js";
+
 function createHeaderBar() {
     const {pathname} = document.location;
     const navBar = document.querySelector("#nav-bar");
-
-    const userName = getUserName();
-    let authLink = `
+    if (navBar) {
+        const userName = getUserName();
+        let navLinks = `
+            <li class="p-8"><a href="/sign-up.html" class="${pathname === "/sign-up.html" ? "text-blue-600" : ""}">SignUp</a></li>
+            <li class="p-8"><a href="/sign-in.html" class="${pathname === "/sign-in.html" ? "text-blue-600" : ""}">LogIn</a></li>
+            `;
+        if (userName) {
+            navLinks = `
             <li class="p-8">
-                <a href="/sign-up.html" class="${pathname === "/sign-up.html" ? "text-blue-600" : ""}">SignUp</a>
-            </li>
+            <a href="/index.html" class="${pathname === "/index.html" ? "text-blue-600" : ""}">Home</a>
+             </li>
             <li class="p-8">
-            <a href="/sign-in.html" class="${pathname === "/sign-in.html" ? "text-blue-600" : ""}">LogIn</a>
+                <a href="/create-post.html" class="${pathname === "/create-post.html" ? "text-blue-600" : ""}">Create Post</a>
             </li>
-`;
-    if (userName) {
-        authLink = `
-            <li class="p-8">
-                <a href="/index.html" class="${pathname === "/" ? "text-blue-600" : ""}">Home</a>
-            </li>
-            <li class="p-8"><span>Hello 👋  ${userName}</span></li>
-            <li class="p-8"><a href="/create-post.html" class="${pathname === "/create-post.html" ? "text-blue-600" : ""}">Create Post</a></li>
-                    `
-    }
-    navBar.innerHTML = `
+            <li class="p-8"><span>Hello  ${userName}</span></li>
+`
+        }
+        navBar.innerHTML = `
         <ul class="flex">
-            ${authLink}
+           ${navLinks}
         </ul>`
+    }
 }
 
-export default createHeaderBar;
+export {createHeaderBar};

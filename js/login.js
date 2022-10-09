@@ -63,7 +63,7 @@ if (logForm) {
                     location.href = "/create-post.html"
                 } else {
                     const err = await response.json();
-                    const message = `An error occurred: ${err.message}`;
+                    const message = `Somtthing went wrong!: ${err.message}`;
                     throw new Error(message);
                 }
             })().catch(err => {

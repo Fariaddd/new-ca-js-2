@@ -54,11 +54,11 @@ createPostForm.addEventListener("submit", function (event) {
             }
             createPostForm.reset();
         })().catch(err => {
-            // console.log(err);
+            console.log(err);
         });
 
     } else {
-        // console.log("Validation FAILED!! 💩");
+        // console.log("Validation FAILED!!");
     }
 })
 

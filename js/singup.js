@@ -2,9 +2,7 @@ import {USER_SIGNUP} from "./API-URL/api.js";
 import {emailValidation, passwordValidation} from "./validation.js"
 
 const contacForm = document.querySelector("#contact-form");
-
 const firstName = document.querySelector("#firstName");
-
 const firstNameError = document.querySelector("#firstNameError");
 const email = document.querySelector("#email");
 const emailError = document.querySelector("#emailError");
@@ -26,7 +24,6 @@ contacForm.addEventListener("submit", function (event) {
     } else {
         firstNameError.classList.remove("hidden");
     }
-
     let isEmail = false;
     if (email.value.trim().length > 0) {
         emailError.classList.add("hidden");
@@ -34,7 +31,6 @@ contacForm.addEventListener("submit", function (event) {
     } else {
         emailError.classList.remove("hidden");
     }
-
     let isValidEmail = false;
     if (email.value.trim().length && emailValidation(email.value) === true) {
         emailErrorNotValid.classList.add("hidden");
@@ -42,16 +38,13 @@ contacForm.addEventListener("submit", function (event) {
     } else if (email.value.trim().length && emailValidation(email.value) !== true) {
         emailErrorNotValid.classList.remove("hidden");
     }
-
     let isPassword = false;
-
     if (password.value.trim().length >= 8) {
         passwordError.classList.add("hidden");
         isPassword = true;
     } else {
         passwordError.classList.remove("hidden");
     }
-
     let isConfirmPassword = false;
     if (confirmPassword.value.trim().length >= 8) {
         confirmPasswordError.classList.add("hidden");
@@ -59,9 +52,8 @@ contacForm.addEventListener("submit", function (event) {
     } else {
         confirmPasswordError.classList.remove("hidden");
     }
-
     let isValidPasswordMatch = false;
-    isValidPasswordMatch = passwordValidation(password.value, confirmPassword.value); // true // false
+    isValidPasswordMatch = passwordValidation(password.value, confirmPassword.value); 
     if (isValidPasswordMatch) {
         confirmPasswordErrorNotMatching.classList.add("hidden");
         isValidPasswordMatch = true
@@ -76,38 +68,33 @@ contacForm.addEventListener("submit", function (event) {
         isValidPasswordMatch;
 
     if (isFormValid) {
-        console.log("Validation SUCCEEDED!!  🥳");
+        console.log("Yeahh Validation SUCCEEDED!");
         const userData = {
             "name": firstName.value,
             "email": email.value,
             "password": password.value
         }
-
-        const REGISTER_USER_URL_ENDPOINT = USER_SIGNUP;
-
+        const REGISTER_USER_URL = USER_SIGNUP;
         (async function signUpUser() {
             try {
-                const response = await fetch(REGISTER_USER_URL_ENDPOINT, {
+                const response = await fetch(REGISTER_USER_URL, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(userData)
                 });
-
                 const data = await response.json();
-
                 if (response.ok) {
                     location.href = "sign-in.html"
                 } else {
                     errorMessage.innerHTML = `Sorry !! ${data.message}`
                 }
-            } catch (e) {
-                // console.log(e);
+            } catch (error) {
+                // console.log(error);
             }
         })();
-
     } else {
-        // console.log("Validation FAILED!! 💩");
+        // console.log("Validation FAILED!!");
     }
 });

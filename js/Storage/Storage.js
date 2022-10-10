@@ -8,7 +8,7 @@ function saveToken(token) {
 }
 
 function getToken() {
-    return getFromStorage("token");
+    return getFromStorage(tokenKey);
 }
 function saveUser(user) {
     saveToStorage(userKey, user);
@@ -32,4 +32,8 @@ function getFromStorage(key) {   // save data from the local storage
         return []
     }
 }
-export {getToken, saveToken, saveUser, getUserName}
+
+function clearStorage(){
+    localStorage.clear();
+}
+export {getToken, saveToken, saveUser, getUserName, clearStorage}

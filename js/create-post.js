@@ -7,6 +7,9 @@ const postTitleError = document.querySelector("#postTitleError");
 const postDescription = document.querySelector("#postDescription");
 const postDescriptionError = document.querySelector("#postDescriptionError");
 const errorMessage = document.querySelector("#error-message");
+if(!accessToken){
+    location.href = "/sign-in.html"
+}
 
 createPostForm.addEventListener("submit", function (event) {
     event.preventDefault();

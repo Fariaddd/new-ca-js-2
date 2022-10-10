@@ -3,7 +3,6 @@ import { getToken } from "./Storage/Storage.js";
 
 const postContainer = document.querySelector("#posts-container");
 const postsNotification = document.querySelector(".posts-notification")
-
 const accessToken = getToken();
 
 async function getUserPosts() {
@@ -13,21 +12,14 @@ async function getUserPosts() {
             "Authorization": `Bearer ${accessToken}`
         }
     })
-
     if (response.ok) {
         const jsonResponse = await response.json();
-        console.log("jsonResponse posts: ", jsonResponse);
         postContainer.innerHTML= "";
-
         const {posts} = jsonResponse;
-
         if(!posts.length) {
             postsNotification.innerHTML = "Sorry you currently don't have any posts";
-
         } else{
              const numberOfPosts = posts.length;
-
-
              for (let i = 0; i < numberOfPosts; i++) {
              postContainer.innerHTML += `
                 <li class="relative px-4 py-5 bg-white">
@@ -42,7 +34,6 @@ async function getUserPosts() {
                     <div class="mt-1">
                         <p class="text-sm text-gray-600 line-clamp-2">${posts[i].body}</p>
                     </div>
-                   
                     <div class="flex">
                         <button
                             data-id="${posts[i].id}"
@@ -54,7 +45,6 @@ async function getUserPosts() {
     }
     } else {
         postsNotification.innerHTML = await response.json()
-        console.log("Something went wrong!");
     }
 }
     getUserPosts().then(()=>{
@@ -62,51 +52,34 @@ async function getUserPosts() {
     });
         function handleDeleteBtns(){
         const deletes = document.getElementsByClassName("delete-btn")
-        console.log( "deletes", deletes )
-
         const totalDeleteBtns = deletes.length;
-
         for (let i = 0; i < totalDeleteBtns; i++){
-            console.log("index of ech delete btn", i);
-
             deletes[i].addEventListener("click", function(){
-                console.log(`${i}`);
-                console.log(this.dataset);
-                console.log(this.dataset.id);
-                console.log(this.getAttribute("data-id"));
                 const postId = this.dataset.id;
                 deletePostById(postId);
             });
         }
-      
     }
-
 function deletePostById(id){
-    console.log( id);
-
     const deleteUserById = async () =>{
         try{
             let resposne = await fetch(`${DELETE_POST_BY_ID}/${id}`, {
                 method: "DELETE",
                 headers: {
-                    // "Content-Type" : "application/josn",
                     "Authorization": `Bearer ${accessToken}`
                 }
             });
             if(resposne.status === 200){
-                console.log("delete post success");
-
                 getUserPosts().then(() => {
                     handleDeleteBtns();
                 });
-  
             } else {
                 const err = await resposne.json();
                 const message = `something went wrong ${err}`;
                 throw Error (message)
             }
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
      }
      deleteUserById().then(r => {

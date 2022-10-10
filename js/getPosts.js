@@ -3,6 +3,9 @@ import { GET_POSTS_URL } from "./API-URL/api.js";
 
 const postsContainer = document.querySelector("#posts-container");
 const accessToken = getToken();
+if(!accessToken){
+    location.href = "/sign-in.html"
+}
 
 (async function getPosts(){
     const response = await fetch(GET_POSTS_URL, {
@@ -21,7 +24,7 @@ const accessToken = getToken();
                 <li class="relative px-4 py-5 bg-white  "> 
                     <div class="flex justify-between space-x-3 ">
                         <div class="flex-1 min-w-0 ">
-                            <a href="#" class="block focus:outline-none">
+                            <a href="/single-post.html?post_id=${post.id}" class="block focus:outline-none">
                                 <span class="absolute inset-0" aria-hidden="true"></span>
                                 <p class="text-sm font-medium text-gray-900 truncate">Gloria Roberston</p>
                                 <p class="text-sm text-gray-500 truncate">${postTitle}</p>

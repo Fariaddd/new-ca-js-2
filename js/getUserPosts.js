@@ -5,6 +5,7 @@ const postContainer = document.querySelector("#posts-container");
 const postsNotification = document.querySelector(".posts-notification")
 const accessToken = getToken();
 
+
 async function getUserPosts() {
     const response = await fetch(GET_USER_POSTS, {
         method: "GET",

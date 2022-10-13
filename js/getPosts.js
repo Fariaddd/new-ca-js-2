@@ -46,7 +46,5 @@ if(!accessToken){
         throw new Error(message)
     }
 })().catch( err=> {
-
-
 });
 

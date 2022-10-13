@@ -7,10 +7,10 @@ const postTitleError = document.querySelector("#postTitleError");
 const postDescription = document.querySelector("#postDescription");
 const postDescriptionError = document.querySelector("#postDescriptionError");
 const errorMessage = document.querySelector("#error-message");
+const accessToken = getToken();
 if(!accessToken){
     location.href = "/sign-in.html"
 }
-
 createPostForm.addEventListener("submit", function (event) {
     event.preventDefault();
     let isPostTitle = false;
@@ -29,7 +29,7 @@ createPostForm.addEventListener("submit", function (event) {
     }
     let isFormValid = isPostTitle && isPostDescription;
     if (isFormValid) {
-        console.log("Validation SUCCEEDED!!  🥳");
+        console.log("Validation SUCCEEDED!!");
         console.log(postTitle.value);
         console.log(postDescription.value);
         const postData = {

@@ -4,7 +4,9 @@ import { getToken } from "./Storage/Storage.js";
 const postContainer = document.querySelector("#posts-container");
 const postsNotification = document.querySelector(".posts-notification")
 const accessToken = getToken();
-
+if(!accessToken){
+    location.href = "/sign-in.html"
+}
 
 async function getUserPosts() {
     const response = await fetch(GET_USER_POSTS, {
@@ -15,7 +17,7 @@ async function getUserPosts() {
     })
     if (response.ok) {
         const jsonResponse = await response.json();
-        postContainer.innerHTML= "";
+        postContainer.innerHTML= " ";
         const {posts} = jsonResponse;
         if(!posts.length) {
             postsNotification.innerHTML = "Sorry you currently don't have any posts";
@@ -35,11 +37,12 @@ async function getUserPosts() {
                     <div class="mt-1">
                         <p class="text-sm text-gray-600 line-clamp-2">${posts[i].body}</p>
                     </div>
-                    <div class="flex">
+                    <div class="flex gap-4 py-4 ">
                         <button
                             data-id="${posts[i].id}"
                             type="button"
                             class="delete-btn items-center rounded bg-red-100 px-4 py-3 text-base font-medium leading-4 text-red-700 hover:bg-red-300">Delete</button>
+                            <a href="edit-post.html?post_id=${posts[i].id}" class="items-center rounded px-4 py-3 text-base font-medium leading-4 text-white bg-sky-500 hover:bg-sky-700">Edit</a>
                     </div>
                 </li>`
         }
@@ -50,7 +53,7 @@ async function getUserPosts() {
 }
     getUserPosts().then(()=>{
         handleDeleteBtns();
-    });
+    })
         function handleDeleteBtns(){
         const deletes = document.getElementsByClassName("delete-btn")
         const totalDeleteBtns = deletes.length;

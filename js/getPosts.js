@@ -2,6 +2,8 @@ import { getToken } from "./Storage/Storage.js";
 import { GET_POSTS_URL } from "./API-URL/api.js";
 
 const postsContainer = document.querySelector("#posts-container");
+const notification = document.querySelector(".notification");
+
 const accessToken = getToken();
 if(!accessToken){
     location.href = "/sign-in.html"
@@ -21,7 +23,7 @@ if(!accessToken){
             const postBody = post.body;
             const postTitle = post.title;
             return (` 
-                <li class="relative px-4 py-5 bg-white  "> 
+                <li class="relative border shadow px-4 py-5 bg-white  "> 
                     <div class="flex justify-between space-x-3 ">
                         <div class="flex-1 min-w-0 ">
                             <a href="/single-post.html?post_id=${post.id}" class="block focus:outline-none">
@@ -37,14 +39,15 @@ if(!accessToken){
                 </li>    
                 `)
         }).join('')
-        console.log(listHtmlPosts);
         postsContainer.insertAdjacentHTML('beforeend', listHtmlPosts);
-
     } else{ 
         const err = await response.json();
         const message = `somethiung went wrong${err}`;
         throw new Error(message)
     }
-})().catch( err=> {
+})().catch( err => {
+    //  console.log(err);
+     notification.innerHTML = err
+
 });
 

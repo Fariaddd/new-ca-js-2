@@ -19,6 +19,11 @@ if(!accessToken){
     })
     if(response.ok){
         const posts = await response.json();
+        if(!posts.length){
+            notification.innerHTML = `Sorry no posts currently;`
+        }
+
+
         const listHtmlPosts = posts.map((post) => {
             const postBody = post.body;
             const postTitle = post.title;
@@ -47,7 +52,7 @@ if(!accessToken){
     }
 })().catch( err => {
     //  console.log(err);
-     notification.innerHTML = err
+    //  notification.innerHTML = err
 
 });
 

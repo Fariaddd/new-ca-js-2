@@ -28,10 +28,7 @@ createPostForm.addEventListener("submit", function (event) {
         postDescriptionError.classList.remove("hidden");
     }
     let isFormValid = isPostTitle && isPostDescription;
-    if (isFormValid) {
-        console.log("Validation SUCCEEDED!!");
-        console.log(postTitle.value);
-        console.log(postDescription.value);
+    if (isFormValid) {  
         const postData = {
             "title": postTitle.value,
             "body": postDescription.value
@@ -46,7 +43,7 @@ createPostForm.addEventListener("submit", function (event) {
                 },
                 body: JSON.stringify(postData)
             })
-            console.log("response", response);
+          
             if (response.ok) {
                 const data = await response.json(); 
                 location.href = "/index.html"

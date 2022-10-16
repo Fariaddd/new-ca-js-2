@@ -68,7 +68,6 @@ contacForm.addEventListener("submit", function (event) {
         isValidPasswordMatch;
 
     if (isFormValid) {
-        console.log("Yeahh Validation SUCCEEDED!");
         const userData = {
             "name": firstName.value,
             "email": email.value,
@@ -91,7 +90,7 @@ contacForm.addEventListener("submit", function (event) {
                     errorMessage.innerHTML = `Sorry !! ${data.message}`
                 }
             } catch (error) {
-                // console.log(error);
+                location.reload = "sign-up.html"
             }
         })();
     } else {

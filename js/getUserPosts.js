@@ -89,6 +89,7 @@ function deletePostById(id){
             }
         } catch (error) {
             // console.log(error);
+
         }
      }
      deleteUserById().then(r => {

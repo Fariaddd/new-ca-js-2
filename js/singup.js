@@ -14,6 +14,7 @@ const confirmPasswordError = document.querySelector("#confirmPasswordError");
 const confirmPasswordErrorNotMatching = document.querySelector("#confirmPasswordErrorNotMatching");
 const errorMessage = document.querySelector("#error-message");
 
+
 contacForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -87,10 +88,10 @@ contacForm.addEventListener("submit", function (event) {
                 if (response.ok) {
                     location.href = "sign-in.html"
                 } else {
-                    errorMessage.innerHTML = `Sorry !! ${data.message}`
+                    errorMessage.innerHTML = `Sorry amigo !! ${data.message}`
                 }
             } catch (error) {
-                location.reload = "sign-up.html"
+                
             }
         })();
     } else {

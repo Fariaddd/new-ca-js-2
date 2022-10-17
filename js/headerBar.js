@@ -3,8 +3,7 @@ import {getToken} from "./Storage/Storage.js";
 
 const accessToken = getToken();
 if(!accessToken){
-location.href = "/sign-in.html"
-}
+location.href = "/sign-in.html"}
 
 function createHeaderBar() {
  
@@ -18,19 +17,18 @@ function createHeaderBar() {
             `;
         if (userName) {
                 navLinks = `
-                <li class="p-6 ">
-                <a href="/index.html" class="${pathname === "/index.html" ? "text-blue-600" : ""}">Home</a>
-                 </li>
-                <li class="p-6">
-                    <a href="/create-post.html" class="${pathname === "/create-post.html" ? "text-blue-600" : ""}">Create Post</a>
-                </li>
-                <li class="p-6">
-                <a href="/my-post.html" class="${pathname === "/my-post.html" ? "text-blue-600" : ""}">My-Posts</a>
-                </li>
-                <li class="p-6"><span>Hello ${userName}</span></li>
-                <li class="p-6"> <button id="logOut-btn">LogOut</button></li> 
-                
-                `
+                                <li class="p-6 ">
+                                <a href="/index.html" class="${pathname === "/index.html" ? "text-blue-600" : ""}">Home</a>
+                                </li>
+                                <li class="p-6">
+                                    <a href="/create-post.html" class="${pathname === "/create-post.html" ? "text-blue-600" : ""}">Create Post</a>
+                                </li>
+                                <li class="p-6">
+                                <a href="/my-post.html" class="${pathname === "/my-post.html" ? "text-blue-600" : ""}">My-Posts</a>
+                                </li>
+                                <li class="p-6"><span>Hello ${userName}</span></li>
+                                <li class="p-6"> <button id="logOut-btn">LogOut</button></li> 
+                            `
             } 
         navBar.innerHTML = `
         <ul  class="flex">

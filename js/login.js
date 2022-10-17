@@ -8,7 +8,7 @@ const emailError = document.querySelector("#emailError");
 const emailErrorNotValid = document.querySelector("#emailErrorNotValid");
 const password = document.querySelector("#password");
 const passwordError = document.querySelector("#passwordError");
-const errorMessage = document.querySelector("#general-error-message");
+const errorMessage = document.querySelector("#error-message");
 
 if (logForm) {
     logForm.addEventListener("submit", function (event) {
@@ -60,14 +60,15 @@ if (logForm) {
                         email: data.email
                     }
                     saveUser(userToSave);
-                    location.href = "/create-post.html"
+                    location.href = "/index.html"
                 } else {
                     const err = await response.json();
-                    const message = `Somtthing went wrong!: ${err.message}`;
+                    const message = `${err.message}`;
                     throw new Error(message);
                 }
-            })().catch(err => {
-                errorMessage.innerHTML = `Sorry !! ${err.message}`
+            })().catch(error => {
+                // console.log(error);
+                errorMessage.innerHTML = `Sorry amigo 🥹 !! ${error.message}`
             });
         } else {
         }

@@ -12,7 +12,6 @@ async function getUserPosts() {
     const response = await fetch(GET_USER_POSTS, {
         method: "GET",
         headers: {
-            "Content-Type": "application/json",
             "Authorization": `Bearer ${accessToken}`
         }
     })

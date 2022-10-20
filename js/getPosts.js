@@ -13,7 +13,6 @@ if(!accessToken){
     const response = await fetch(GET_POSTS_URL, {
         method: "GET",
         headers: {
-            "Content-Type": "application/json",
             "Authorization": `Bearer ${accessToken}`
         }
     })
@@ -28,7 +27,7 @@ if(!accessToken){
             const postBody = post.body;
             const postTitle = post.title;
             return (` 
-                <li class="relative border shadow px-4 py-5 bg-white  "> 
+                <li class="relative px-4 py-5 bg-white  "> 
                     <div class="flex justify-between space-x-3 ">
                         <div class="flex-1 min-w-0 ">
                             <a href="/single-post.html?post_id=${post.id}" class="block focus:outline-none">
@@ -51,8 +50,8 @@ if(!accessToken){
         throw new Error(message)
     }
 })().catch( err => {
-    //  console.log(err);
-    //  notification.innerHTML = err
+     console.log(err);
+     notification.innerHTML = err
 
 });
 
